@@ -8,10 +8,10 @@
 
        };
        ws.onclose = function(evt) {
-          //  alert("socket closed");
+          alert("socket closed");
        };
        ws.onmessage = function(evt) {
-           alert(`Полученные данные: ${evt_data}`);
+           alert(`Полученные данные: ${evt.data}`);
        };
     </script>
   </head>
