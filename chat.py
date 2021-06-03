@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask_sockets import Sockets
 import time
 from google_trans_new import google_translator
-
+import datetime
 app = Flask(__name__)
 sockets = Sockets(app)
 app.config.update(
@@ -26,6 +26,8 @@ def echo_socket(ws):
         if 'translate' in message:
             kk = kazah(message.replace('translate','')) if len(kazah(message.replace('translate','')))>1 else 'you didn`t attach anything!'
             ws.send(kk)
+        elif message == 'time':
+            ws.send(f'now is {datetime.datetime.now()}')
         else:
             on_message(ws,message)
             # time.sleep(1)
